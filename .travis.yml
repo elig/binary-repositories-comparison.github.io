@@ -9,15 +9,11 @@ before_install:
 - git config user.email "$GIT_EMAIL"
 - git config credential.helper "store --file=.git/credentials"
 - echo "https://$GH_TOKEN:@github.com" > .git/credentials
-
 script: ./gradlew clean release
-
 after_success:
- - ./push.sh
+- ./push.sh
 
 email: elig@jfrog.com
 env:
   global:
-   - GIT_NAME="Eli Givoni"
-   - GIT_EMAIL=elig@jfrog.com
-    secure: v4jjg6iozS74EozvRKGDe7UNw36xxD7m2eQNtRO3FhZD2vAm563V8D6wzZm9Ak+ilKiTM4B77agtBao1B7RoBypCNiCYQkSdCfIZmbmppM06NbCl7t/GPkJ6t8VeUmWNcCUif2jf2f6TAE99uixYLQXvKHAWIv8zwyPHyfeTJuCSnTdm9wRQ43EF5NWpxc1cVr1auEF0FvHoTgcOr2BbqaOTaEId7WLAvSed/nv2pRsn1xI0hLId25lOEOQy1JSsazqRMnwFOqdKHJkPFR0TxTr7RiFwYHg8zFecSiSdHkPU+meW+z0yx/+5FWEDTDMn63YJIqzqTLmniQaLgBsQSpP1KU9AOCQilKv2fcIp1ElKFDE7pyeRtaGhYik/90veiYYF+UL7Nj0NIpGFJeYSis3csdp/zyMoGKRINH9UEQBTdWw+d+jMH6LWc2bd0+kucPpe5fYgbegxL7EhNPFf4QgodzF8LPaeOwQYm8ChHZATUOfAu1Ll0+hsWywITCqMKYJuuMuTUpdAGD01JlpCd3iv9rkomw5IX1PP8KSPhu6ivQTCJYVGxPel4J60UePTBJvdDfgvw7XBSyk2UwPxpUf0fGe9TFL4YUyJ1wPz3du17C0gXdkvU6XLQXRGef8HG16uoaw5VyjXgrrnYJLm5c4/nKUeVdQ+8FU5kFsx8Bg=
+    secure: dmcEuKnkZ0bBQHjcoZ6/ZerhFfAARNZ4bIH07o4qyyCEt/Ixbv/JPYgKjv0V9wIezSsJox7Y8rxVusM4/JHF4yKFCkaeBRNGHZtWWLhTYpFZhZqkpp4I6IikJH7gqWt0EKZ7+xewJ5niyLC8jOiIF5fZmdAEKJc3RRccCL7xhqnwiCxpyILCXlg8F7zbSSDwsNOKwvcM0byjIoyXzAth4uKMB7rpFNtCZVwzElXVSJTxH/XWG80A0z/yh/Inmis1mjLN1N6s7DuoUSdde6VeSlc7b6qq6W/XW+daDSvQK2GBbj8R7CVhmAQvYMJ89Ugh6hodftvouuU8lfYsdEgAjmsEOQthp+jWpc7urnZWkFxj2VBNGDnURdB5pTbXxLBveiJxdS5F0Fro5y4obSYmGwvnfFeHeohCRDT4lheeJF/j1iTgiVzL4fSsf3spzUgZaGUvCi14VYEtPRLwRDvrJ3CHCkx1LOWXyrCn/WxViZzySzA+Ak0Xw8S+GuyS6NleXkCQGlJd05UkA/PCzMtIqkmQgBSU/s2+4bvBd0Eg1zFcWlgiMYClfnIgAD6LlKvFOcEEYRac3pjpmJkCe43DkodpcUuAli/rrB7A9UurIbZgo6aqOibq7rM/QyOjAKsjNGeQJFG89tGYdJfFDMOKcsZZQNjxmyKRdgYOVmfUR6I=

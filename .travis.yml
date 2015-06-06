@@ -7,6 +7,7 @@ jdk:
 before_install:
 - git config user.name "$GIT_NAME"
 - git config user.email "$GIT_EMAIL"
+- git config --global push.default simple
 - git config credential.helper "store --file=.git/credentials"
 - echo "https://$GH_TOKEN:@github.com" > .git/credentials
 script: ./gradlew clean release

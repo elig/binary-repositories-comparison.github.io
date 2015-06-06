@@ -13,8 +13,9 @@ fi
 git diff-index --quiet HEAD
 dirty=$?
 if [ "$dirty" != "0" ]; then
-git add index.html
-git add images
+git checkout master
+git add -A index.html
+git add -A images
 git commit -a -m "Changes in table"
 git push
 

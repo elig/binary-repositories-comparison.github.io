@@ -12,7 +12,8 @@ fi
 ###################################################################
 git diff-index --quiet HEAD
 dirty=$?
-if [ "$dirty" != "0" ]; then
+if [ "$dirty" != "0" ]; then git stash; fi
+
 git checkout master
 mv build/asciidoc/html5/Binary-Repository-Manager-Feature-Matrix.html build/asciidoc/html5/index.html
 for f in build/asciidoc/html5/*; do
@@ -30,6 +31,6 @@ git push
 tagName=$(date +%s)
 git tag $tagName
 git push origin $tagName
-fi
+
 
 exit 0

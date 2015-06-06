@@ -14,8 +14,15 @@ git diff-index --quiet HEAD
 dirty=$?
 if [ "$dirty" != "0" ]; then
 git checkout master
-git add -A index.html
-git add -A images
+mv build/asciidoc/html5/Binary-Repository-Manager-Feature-Matrix.html build/asciidoc/html5/index.html
+for f in build/asciidoc/html5/*; do
+    file=${f#build/asciidoc/html5/*}
+    if ! git ls-files -i -o --exclude-standard --directory | grep -q ^$file$; then
+        # Not ignored...
+        cp -rf $f .
+        git add -A $file
+    fi
+done
 git commit -a -m "Changes in table"
 git push
 

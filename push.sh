@@ -24,7 +24,7 @@ for f in build/asciidoc/html5/*; do
         git add -A $file
     fi
 done
-git commit -a -m "Changes in table"
+git commit -a -m "Changes in table, [ci skip]"
 git push
 
 # Create a tag

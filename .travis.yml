@@ -13,8 +13,9 @@ before_install:
 script: ./gradlew clean asciidoctor
 after_success:
 - ./push.sh
-
-email: elig@jfrog.com
+notifications:
+ email:
+  - elig@jfrog.com
 env:
   global:
     secure: dmcEuKnkZ0bBQHjcoZ6/ZerhFfAARNZ4bIH07o4qyyCEt/Ixbv/JPYgKjv0V9wIezSsJox7Y8rxVusM4/JHF4yKFCkaeBRNGHZtWWLhTYpFZhZqkpp4I6IikJH7gqWt0EKZ7+xewJ5niyLC8jOiIF5fZmdAEKJc3RRccCL7xhqnwiCxpyILCXlg8F7zbSSDwsNOKwvcM0byjIoyXzAth4uKMB7rpFNtCZVwzElXVSJTxH/XWG80A0z/yh/Inmis1mjLN1N6s7DuoUSdde6VeSlc7b6qq6W/XW+daDSvQK2GBbj8R7CVhmAQvYMJ89Ugh6hodftvouuU8lfYsdEgAjmsEOQthp+jWpc7urnZWkFxj2VBNGDnURdB5pTbXxLBveiJxdS5F0Fro5y4obSYmGwvnfFeHeohCRDT4lheeJF/j1iTgiVzL4fSsf3spzUgZaGUvCi14VYEtPRLwRDvrJ3CHCkx1LOWXyrCn/WxViZzySzA+Ak0Xw8S+GuyS6NleXkCQGlJd05UkA/PCzMtIqkmQgBSU/s2+4bvBd0Eg1zFcWlgiMYClfnIgAD6LlKvFOcEEYRac3pjpmJkCe43DkodpcUuAli/rrB7A9UurIbZgo6aqOibq7rM/QyOjAKsjNGeQJFG89tGYdJfFDMOKcsZZQNjxmyKRdgYOVmfUR6I=

@@ -22,6 +22,7 @@ asciidoctor {
             'docinfo1': 'true'
 }
 
+//In travis letting the push.sh do the copy
 task copyDocs(type: Copy) {
     description = 'Copy the generated html and images to root project'
     from "$project.buildDir/asciidoc/html5"

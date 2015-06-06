@@ -19,7 +19,7 @@ image:nexus1.png[Nexus0, 300, 200, link="https://github.com/binary-repositories-
 
 
 |*Latest Version*
-|2.0.2
+|2.0.3
 |3.8.0
 |2.11.3
 

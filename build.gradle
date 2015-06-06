@@ -1,0 +1,62 @@
+plugins {
+    id 'org.asciidoctor.convert' version '1.5.2'
+    id "nebula.gradle-git-scm" version "2.2.0"
+    id "org.ajoberstar.github-pages" version "1.1.0"
+
+}
+
+apply plugin: 'java'
+apply plugin: 'org.asciidoctor.convert'
+apply plugin: 'org.ajoberstar.github-pages'
+
+
+version = '1.0.0-SNAPSHOT'
+
+asciidoctor {
+    attributes 'build-gradle': file('build.gradle'),
+            'sourcedir': project.sourceSets.main.java.srcDirs[0],
+            'endpoint-url': 'http://binary-repositories-comparison.github.io',
+            'source-highlighter': 'coderay',
+            'imagesdir': 'images',
+            'toc': 'left',
+            'icons': 'font',
+            'setanchors': 'true',
+            'idprefix': '',
+            'idseparator': '-',
+            'docinfo1': 'true'
+}
+
+task copyDocs(type: Copy) {
+    description = 'Copy the generated html and images to root project'
+    from "$project.buildDir/asciidoc/html5"
+    into project.rootDir
+    doLast {
+        new File("$project.rootDir/Binary-Repository-Manager-Feature-Matrix.html").renameTo(new File("$project.rootDir/index.html"))
+
+    }
+}
+
+import org.ajoberstar.grgit.*
+
+ext.repo = Grgit.open(project.file('.'))
+
+version = System.currentTimeMillis()
+
+task tagAndPush << {
+    repo.add(patterns: ['index.html', 'images'])
+    repo.commit(message: 'Changes in table')
+    repo.push()
+    repo.tag.add {
+        name = version
+        message = "Release of ${version}"
+    }
+    repo.push(tags: true)
+
+}
+
+//task release(dependsOn: ['asciidoctor', 'copyDocs','tagAndPush'])
+task release(dependsOn: ['asciidoctor', 'copyDocs'])
+
+
+tagAndPush.mustRunAfter copyDocs
+copyDocs.mustRunAfter asciidoctor

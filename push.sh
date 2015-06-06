@@ -16,7 +16,7 @@ if [ "$dirty" != "0" ]; then
 git add index.html
 git add images
 git commit -a -m "Changes in table"
-git push origin master
+git push
 
 # Create a tag
 tagName=$(date +%s)
